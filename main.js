@@ -1,4 +1,4 @@
 function newGame() {
-  truc = new Game;
-  truc.initCharacters;
+  let game = new Game;
+  game.initCharacters();
 };

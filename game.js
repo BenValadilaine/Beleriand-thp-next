@@ -1,25 +1,27 @@
 class Game {
   constructor(
-    turnLeft = 10
+    turnLeft = 10,
+    characters = new Array
   ){
     this.turnLeft = turnLeft;
+    this.characters = characters;
   };
 
   initCharacters = () => {
-    assassin = new Assassin;
-    berzerker = new Berzerker;
-    fighter = new Fighter;
-    monk = new Monk;
-    paladin = new Paladin;
-    console.log("Tous les personnages ont été créés.");
+    let assassin = new Assassin;
+    let berzerker = new Berzerker;
+    let fighter = new Fighter;
+    let monk = new Monk;
+    let paladin = new Paladin;
+    characters.push(assassin, berzerker, fighter, monk, paladin);
+    console.log("Tous les personnages ont été créé.e.s.");
+    console.log(characters);
   };
+
 
   nextTurn = () => {
     this.turnLeft -= 1;
   };
 
-  endGame = () => {
-
-  };
 
 };
