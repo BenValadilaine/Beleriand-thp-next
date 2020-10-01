@@ -7,7 +7,6 @@ class Game {
     this.characters = characters;
     this.initCharacters();
   };
-
   initCharacters = () => {
     let assassin = new Assassin();
     let berzerker = new Berzerker();
@@ -19,13 +18,29 @@ class Game {
     console.log(this.characters.map(character => character.name));
   };
 
+  startGame = () => {
+    console.log("******* Bienvenue dans Beleriand *******");
+    console.log("             le jeu de rôle");
+    console.log("****************************************");
+    console.log(" ");
+
+    while (this.endGame() != true) {
+      let playingCharacter = this.characters[Math.floor(Math.random() * 5)];
+      let enemy = playingCharacter.selectEnemy;
+      playingCharacter.attacks(enemy);
+      console.log(`${playingCharacter.name} a attaqué ${enemy.name} et lui a infligé ${playingCharacter.attack} pts de dégâts.`);
+      this.newTurn();
+    };
+
+  };
+
   nextTurn = () => {
     this.turnLeft -= 1;
   };
 
-  winnerIs = () => {
-    let aliveCharacters = this.characters.filter(character => character.hp > 0);
-    return aliveCharacters;
+  newTurn = () => {
+    console.log(`Il reste ${this.turnLeft} tours à jouer.`);
+    this.nextTurn();
   };
 
   endGame = () => {
@@ -36,4 +51,10 @@ class Game {
       return true;
     };
   };
+
+  winnerIs = () => {
+    let aliveCharacters = this.characters.filter(character => character.hp > 0);
+    return aliveCharacters;
+  };
+
 };

@@ -22,6 +22,8 @@ class Fighter extends Character {
       return "Vous n'avez plus assez de mana pour utiliser Dark vision."
     };
 
+    //more things to come
+    
     this.mana -= 20;
     this.darkVision = true;
   };

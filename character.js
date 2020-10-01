@@ -4,33 +4,31 @@ class Character {
     hp = 20,
     mana = 10,
     attack = 5,
-    status = "playing",
+    status = "playing"
   ){
     this.name = name;
-    this.maxHp = hp;
-    this.maxMana = mana;
-    this.mxAttack = attack;
+    this.hp = hp;
+    this.mana = mana;
+    this.attack = attack;
     this.status = status; // 'playing' or 'winner' or 'loser'
   };
 
-  takesDamages = (enemy) => {
-    this.hp -= enemy.attack
-    console.log(`${this.name} a perdu ${enemy.attack} hp. Il lui en reste maintenant ${this.maxHp}.`);
-
-    if (this.hp <= 0) {
-      this.status = "loser"
-    }else {
-      this.status = "playing"
-    };
+  isAttacked = (enemy) => {
+    this.hp -= enemy.attack;
   };
 
-  dealsDamages = (victim) => {
-    victim.hp -= this.attack // pas sûr pour le this.attack
-    console.log(`${this.name} passe à l'attaque ! Il inflige ${this.attack} dégâts à ${victim.name}.`);
+  attacks = (victim) => {
+    victim.isAttacked(this);
   };
 
   setStatusWinner = () => {
-    this.status = "winner"
+    this.status = "winner";
+  };
+
+  selectEnemy = () => {
+    let playingCharacterIndex = game.characters.indexOf(this);
+    let enemies = game.characters.slice();
+    return enemies = enemies.splice(playingCharacterIndex, 1);
   };
 
 };
