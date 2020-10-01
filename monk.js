@@ -10,4 +10,7 @@ class Monk extends Character {
     super(name, hp, mana, attack, status);
     this.heal = heal;
   };
+  specialName = () => {
+    return "Heal : rend 8 pv. Coûte 25 pts de mana.";
+  };
 };

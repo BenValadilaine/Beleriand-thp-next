@@ -10,4 +10,7 @@ class Berzerker extends Character {
     super(name, hp, mana, attack, status);
     this.rage = rage;
   };
+  specialName = () => {
+    return "Rage : donne 1 pts d'attaque en plus pour le restant de la partie. Coûte 1 pv.";
+  };
 };
